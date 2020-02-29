@@ -50,7 +50,7 @@ class EventControllerTest extends TestCase
             'description' => "It is a frozen affair"
         ];
         $event = tap(new Event($data))->save();
-        $response =  $this->json("DELETE", "/events/1")->assertStatus(302);
+        $response =  $this->json("DELETE", "/events/1")->assertStatus(200);
         $this->assertDatabaseMissing('events', ['event_name' => 'Burning man']);
     }
 }
